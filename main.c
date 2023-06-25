@@ -136,6 +136,32 @@ void drawPlayer(SDL_Renderer* renderer, Player* player) {
     SDL_RenderDrawLine(renderer, player->x, player->y, player->x + 10 * cos(player->angle), player->y + 10 * sin(player->angle));
 }
 
+// draw 3d walls
+void draw3dWalls(SDL_Renderer* renderer, Player* player) {
+    // Set the color for walls
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+
+    // Draw the walls
+    for (int i = 0; i < numRays; i++) {
+        float angle = player->angle - PI/6 + i * PI/180;
+        float x = player->x;
+        float y = player->y;
+        float dx = cos(angle);
+        float dy = sin(angle);
+        float distance = 0;
+        bool hit = false;
+        while (!hit && distance < 1000) {
+            x += dx;
+            y += dy;
+            distance += 1;
+            if (maze[(int)y/CELL_SIZE][(int)x/CELL_SIZE] == 1) {
+                hit = true;
+            }
+        }
+        SDL_RenderDrawLine(renderer, player->x, player->y, x, y);
+    }
+}
+
 
 void draw(SDL_Renderer* renderer, Player* player) {
     // Clear the renderer
@@ -149,6 +175,8 @@ void draw(SDL_Renderer* renderer, Player* player) {
 
     // Draw the rays
     drawRays(renderer, player);
+
+    draw3dWalls(renderer, player);
 
     // Draw the player
     drawPlayer(renderer, player);
