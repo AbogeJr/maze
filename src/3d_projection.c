@@ -15,7 +15,7 @@ void generate3DProjection(void)
     int distanceFromTop, textureOffsetY;
     Uint32 texelColor;
     (void)texelColor;
-    int texNum;
+    // int texNum;
 
     for (i = 0; i < NUM_RAYS; i++)
     {
@@ -42,7 +42,7 @@ void generate3DProjection(void)
             textureOffsetX = (int)rays[i].wallHitX % TEXTURE_WIDTH;
 
         /* getting the correct texture id number from the map */
-        texNum = rays[i].wallHitContent - 1;
+        // texNum = rays[i].wallHitContent - 1;
 
         /* rendering the wall from wallTopPixel to wallBottomPixel */
         for (y = wallTopPixel; y < wallBottomPixel; y++)
@@ -52,7 +52,7 @@ void generate3DProjection(void)
             textureOffsetY = distanceFromTop * ((float)TEXTURE_HEIGHT / wallStripHeight);
 
             /* seting the color of the wall based on the color from the texture */
-            Uint32 texelColor = textures[texNum][(TEXTURE_WIDTH * textureOffsetY) + textureOffsetX];
+            Uint32 texelColor = textures[0][(TEXTURE_WIDTH * textureOffsetY) + textureOffsetX];
             colorBuffer[(WINDOW_WIDTH * y) + i] = texelColor;
         }
 

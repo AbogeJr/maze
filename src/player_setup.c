@@ -33,13 +33,6 @@ void setupPlayer(SDL_Instance instance)
 
     /* loading textures from the textures.h */
     textures[0] = (Uint32 *) REDBRICK_TEXTURE;
-    textures[1] = (Uint32 *) PURPLESTONE_TEXTURE;
-    textures[2] = (Uint32 *) MOSSYSTONE_TEXTURE;
-    textures[3] = (Uint32 *) GRAYSTONE_TEXTURE;
-    textures[4] = (Uint32 *) COLORSTONE_TEXTURE;
-    textures[5] = (Uint32 *) BLUESTONE_TEXTURE;
-    textures[6] = (Uint32 *) WOOD_TEXTURE;
-    textures[7] = (Uint32 *) EAGLE_TEXTURE;
 }
 
 /**
