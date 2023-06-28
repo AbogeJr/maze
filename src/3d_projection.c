@@ -41,8 +41,7 @@ void generate3DProjection(void)
         else
             textureOffsetX = (int)rays[i].wallHitX % TEXTURE_WIDTH;
 
-        /* getting the correct texture id number from the map */
-        // texNum = rays[i].wallHitContent - 1;
+
 
         /* rendering the wall from wallTopPixel to wallBottomPixel */
         for (y = wallTopPixel; y < wallBottomPixel; y++)
